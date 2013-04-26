@@ -23,11 +23,15 @@ There are, however, a few caveats that limit the usability of this feature:
 
 * Each document maintains its own cache
 
-* An update to the manifest file causes all assets to be requested
+Even if two documents reference the same manifest file, a separate cache for each document is created.
+
+* A change to the manifest file causes all assets to be requested
+
+If the browser detects a change to the manifest file, all files listed are requested from the server with a `If-Modified-Since` header. Depending on the number of files, this will take a considerable amount of time.
 
 * No dynamic loading of manifests
 
-* A document with a manifest behaves differently
+There is no way to programmatically run the caching process and no way to specify the manifest dynamically.
 
 ### How
 
