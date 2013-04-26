@@ -11,7 +11,7 @@ var appCache = new AppCacheManager({
 
 // the AppCacheManager aggregates the individual applicationCache events
 // following the rules from http://www.w3.org/TR/2011/WD-html5-20110525/offline.html#appcacheevents
-$(window.appCache).bind("cached", function() { /* ... */ });
+$(appCache).bind("cached", function() { /* ... */ });
 ````
 
 ### Why
