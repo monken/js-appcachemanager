@@ -5,12 +5,8 @@ Managing multiple cache manifests on a single page using IFrames.
 ### Synopsis
 
 ````javascript
-// sorry for the global, but the iframes have to communicate with the parent
-window.appCache = new AppCacheManager({
+var appCache = new AppCacheManager({
   manifests: ["assets", "images", "i18n.en"]
-  // Just in case you don't like window.appCache or have more than one instance
-  // specify the name of the variable
-  // , varName: "appCache" 
 });
 
 // the AppCacheManager aggregates the individual applicationCache events
