@@ -1,10 +1,26 @@
 ## AppCacheManager
 
-A class for managing multiple applicationCache manifests on a single page. 
+Managing multiple cache manifests on a single page using IFrames.
+
+### Synopsis
+
+````javascript
+// sorry for the global, but the iframes have to communicate with the parent
+window.appCache = new AppCacheManager({
+  manifests: ["assets", "images", "i18n.en"]
+  // Just in case you don't like window.appCache or have more than one instance
+  // specify the name of the variable
+  // , varName: "appCache" 
+});
+
+// the AppCacheManager aggregates the individual applicationCache events
+// following the rules from http://www.w3.org/TR/2011/WD-html5-20110525/offline.html#appcacheevents
+$(window.appCache).bind("cached", function() { /* ... */ });
+````
 
 ### Why
 
-The HTML5 offline capabilities allow to store a large amount of files on the client's browser using a simple manifest file. The applicationCache JavaScript API gives access to the status of the offline cache.
+Authors can provide a manifest which lists the files that are needed for the Web application to work offline and which causes the user's browser to keep a copy of the files for use offline.
 There are, however, a few caveats that limit the usability of this feature:
 
 * One manifest per document
